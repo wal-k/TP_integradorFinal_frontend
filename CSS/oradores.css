@@ -1,0 +1,17 @@
+.card{
+
+    width: 18rem;
+    font-size: x-small;
+    text-align: left;
+    margin: 1vw;
+    margin-bottom: 5vh;
+
+}
+
+.cards-container{
+
+    padding-left: 10vw;
+    padding-right: 10vw;
+
+}
+

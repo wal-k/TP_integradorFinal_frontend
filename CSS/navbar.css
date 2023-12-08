@@ -1,0 +1,64 @@
+nav{
+    background-color: #343a40;
+    color: lightgrey;
+    padding-left: 8vw !important;
+    padding-right: 8vw !important;
+   
+}
+
+nav a{
+   
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+nav a:first{
+    font-size: larger;
+}
+
+nav a:visited{
+
+    text-decoration: none;
+
+}
+
+.navbar-brand{
+    
+    height: 4rem;
+    width:9rem;
+    font-size: 1rem;
+    
+}
+
+.navbar-brand img{
+   
+    width: 5rem;
+    height: 3rem;
+    color: lightgray;
+      
+}
+
+.menu button{
+    color: lightgrey;
+}
+
+.menu button:hover{
+    color: white;
+
+}
+
+.menu :last-child{
+    color:#2fa746;
+}
+
+.menu :last-child:hover{
+    color:#2dff57;
+}
+
+.menu button{
+    border: none;
+    background: none;
+}
+

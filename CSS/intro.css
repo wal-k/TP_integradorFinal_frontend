@@ -1,0 +1,35 @@
+#intro{
+    color: rgb(255, 255, 255);
+    
+}
+
+#intro img{
+    width: 100vw;
+    height: 80vh;
+    filter: brightness(0.5);
+    object-fit: cover;
+}
+
+
+div.relative{
+    position: relative;
+  
+}
+
+#intro-text-box-md{
+    position: absolute;
+    top: 35vh;
+    left: 40vw; 
+}
+
+#intro-text-box-sm{
+    position: absolute;
+    top: 15vh;
+    padding: 3rem;
+    
+}
+
+#intro-column{
+    position: relative;
+
+}
