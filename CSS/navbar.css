@@ -14,16 +14,6 @@ nav a{
     text-decoration: none;
 }
 
-nav a:first{
-    font-size: larger;
-}
-
-nav a:visited{
-
-    text-decoration: none;
-
-}
-
 .navbar-brand{
     
     height: 4rem;
@@ -34,31 +24,48 @@ nav a:visited{
 
 .navbar-brand img{
    
-    width: 5rem;
-    height: 3rem;
+    width: 5.5rem;
+    height: 3.5rem;
     color: lightgray;
       
 }
 
-.menu button{
-    color: lightgrey;
-}
 
-.menu button:hover{
-    color: white;
-
-}
-
-.menu :last-child{
+.link-comprar{
     color:#2fa746;
 }
 
-.menu :last-child:hover{
+.link-comprar:hover{
     color:#2dff57;
 }
 
-.menu button{
-    border: none;
-    background: none;
+nav,
+
+.offcanvas{
+
+    background-color: #343a40;
+    column-width: 10px;
+
 }
 
+#menuLateral{
+    width: 75vw;
+}
+
+.navbar-toggler{ 
+
+    border: none;
+
+}
+
+.navbar-toggler:focus{ 
+
+    outline: none;
+    box-shadow: none;
+}
+
+@media(max-width: 768px){
+    .navbar-nav > li:hover{
+        background-color: rgb(134, 150, 118);
+    }
+}

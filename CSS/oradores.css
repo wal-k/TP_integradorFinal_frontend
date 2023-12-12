@@ -1,10 +1,11 @@
 .card{
 
-    width: 18rem;
+    width: 20rem;
     font-size: x-small;
     text-align: left;
     margin: 1vw;
     margin-bottom: 5vh;
+    align-items: center;
 
 }
 

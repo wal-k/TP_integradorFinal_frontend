@@ -1,7 +1,9 @@
 footer{
 
-    background: linear-gradient(90deg, rgba(28,54,67,1) 0%, rgba(30,81,110,1) 100%);
+    background: linear-gradient(90deg, rgb(38, 71, 87) 0%, rgba(30,81,110,1) 100%);
     color: white;
+    bottom: 0;
+    position: relative;
 }
 
 footer a{
@@ -11,11 +13,16 @@ footer a{
     margin-right: 1.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    text-decoration: none;
+    text-align: center;
    
 }
 
-footer col{
+footer a:hover{
+    color: #2dff57;
+}
 
+footer col{
     padding: 8rem !important;
 
 }
