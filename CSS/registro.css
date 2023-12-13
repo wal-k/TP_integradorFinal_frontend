@@ -1,16 +1,22 @@
-#btn-enviar{
+.btn-enviar{
 
     background-color: #96c93e ;
     color: white;
-
 }
+
+.btn-enviar:hover{
+
+    background-color: #87ad47 ;
+    color: white;
+}
+
 
 #charla-link{
 
     color: black;
     text-decoration: underline; 
-
 }
+
 
 #charla-link{
     text-decoration: none;

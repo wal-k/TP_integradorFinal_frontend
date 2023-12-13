@@ -47,6 +47,8 @@ function agregarResultado(resultado) {
 
 }
 
+
+
 export {calcular_descuentos, validarDatos, agregarResultado};
 
 window.borrar = borrar;

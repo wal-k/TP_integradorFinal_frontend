@@ -4,11 +4,18 @@ import { agregarResultado } from "./modules/funciones.js";
 
 
 
+
 function enviar(){
 
-    let nombre = document.getElementById('campo_nombre').value;
-    let apellido = document.getElementById('campo_apellido').value;
-    alert("Tu mensaje ha sido enviado " + nombre + " " + apellido + "!");
+   
+        let nombre = document.getElementById('campo_nombre').value;
+        let apellido = document.getElementById('campo_apellido').value;
+        let mail = document.getElementById('campo_email').value;
+        alert("Tu mensaje ha sido enviado " + nombre + " " + apellido + "!");
+    
+
+    
+
 
 }
 
@@ -47,3 +54,10 @@ function resumen() {
 
 window.enviar = enviar;
 window.resumen = resumen;
+
+//Funciones Backend
+window.eliminarOrador = eliminarOrador;
+window.nuevoOrador = nuevoOrador;
+window.dibujarTabla = dibujarTabla;
+window.listarOradores = listarOradores;
+window.dibujarFilas = dibujarFilas;

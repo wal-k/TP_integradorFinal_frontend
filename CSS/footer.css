@@ -1,5 +1,4 @@
 footer{
-
     background: linear-gradient(90deg, rgb(38, 71, 87) 0%, rgba(30,81,110,1) 100%);
     color: white;
     bottom: 0;
@@ -7,7 +6,6 @@ footer{
 }
 
 footer a{
-
     color: white;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
@@ -25,4 +23,8 @@ footer a:hover{
 footer col{
     padding: 8rem !important;
 
+}
+
+.footerBuyTickets{
+bottom: 0%;
 }
