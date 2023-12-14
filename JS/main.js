@@ -6,18 +6,49 @@ import { agregarResultado } from "./modules/funciones.js";
 
 
 function enviar(){
-
-   
+        //debugger;
         let nombre = document.getElementById('campo_nombre').value;
         let apellido = document.getElementById('campo_apellido').value;
         let mail = document.getElementById('campo_email').value;
+        let tema = document.getElementById('mje').value;
         alert("Tu mensaje ha sido enviado " + nombre + " " + apellido + "!");
-    
+
+        const orador = {
+            nombre,
+            apellido,
+            mail,
+            tema
+        };
+
+        //post al servidor
+        //1 preparo la peticion
+        const respuesta = fetch(`http://localhost:8080/web-app/api/orador`, {
+            method: 'POST',
+            body: JSON.stringify(orador)
+        });
+
+        //2 intento reosolver la promesa
+        respuesta
+            .then(response => response.json())
+            .then(respuesta => {
+                //actualizar el div del html con la informacion
+                alert(`Se ha dado de alta el orador id: ${respuesta.id}`);
+                listarOradores();
+                limpiarInputOradores();
+            })
+            .catch(error => console.log(error))
+
+    }
+
+
+   
 
     
 
+    
 
-}
+
+
 
 
 //Linkeo el botón que voy a usar
@@ -56,8 +87,4 @@ window.enviar = enviar;
 window.resumen = resumen;
 
 //Funciones Backend
-window.eliminarOrador = eliminarOrador;
-window.nuevoOrador = nuevoOrador;
-window.dibujarTabla = dibujarTabla;
-window.listarOradores = listarOradores;
-window.dibujarFilas = dibujarFilas;
+
