@@ -4,32 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/navbar.css">
+    <link rel="stylesheet" href="CSS/comprarTickets.css">
     <title>Listado de Oradores - Conf Bs As</title>
 </head>
 <body class="bg-secondary">
+    
     <div class="container-fluid p-3 w-50">
-        <form>
-            <div class="col text-md-center">
+        <div class="container-fluid">
+            <div class="row">       
+                    <nav class="navbar navbar-expand-lg navbar-dark px-5 p-0 fixed-top">
+                        <div class="container-fluid">
+                            <a href="" class="navbar-brand fw-semibold fs-5">
+                                <i><img src="imgs/codoacodo.png" alt=""></i>
+                                <span class="offcanvas-title text-light">Conf Bs As</span>
+                            </a>
+        
+                            <div class="menu pl-5">
+                                <a class="link-comprar fw-bold" href="index.html" role="button">Home</a>
+                            </div>
+                        </div>
+                    </nav>      
+            </div>
+        </div>
+        <div>
+            <div class="container pt-5 mt-4 col text-md-center">
                 <div class="text-center">
                     <h4>Carga y modificacion de Oradores</h2>
                 </div>
                 <div class="d-md-block">
-                    <form class="d-md-block" id="form-box">
+                    <form class="d-md-block was-validated" id="form-box" onsubmit="nuevoOrador('nombre', 'apellido', 'mail', 'tema')">
                         <div class="d-flex p-0">
                             <input type="text" placeholder="Nombre" class="form-control w-50" id="nombre" required>
                             <input type="text" placeholder="Apellido" class="form-control w-50" id="apellido" required>
                         </div>
                         <div class="d-flex pt-1">
-                            <input type="email" placeholder="Email" class="form-control w-50" id="mail" required>
+                            <input type="email" placeholder="Por favor ingrese un email válido" class="form-control w-50" id="mail" required>
                             <input type="text" placeholder="Tema" class="form-control w-50" id="tema" required>
                         </div>
-                        <button type="button" class="btn w-100 mt-2 btn-danger" id="btnGrabar"> Guardar </button>
+                        <button type="submit" class="btn w-100 mt-2 btn-danger" id="btnGrabar"> Guardar </button>
                     </form>
                 </div>
             </div>
-            </div>        
-        </form>
+        </div>        
     </div>
+    
 
     <hr/>
     <button id="btnListado" class="w-100" style="background-color: darkorange;">    
@@ -76,218 +95,7 @@
         </div>
     </div>
       
-<script>
 
-    //Funciones Backend
-
-        let oradorId;
-        let oradores = [];
-        let oradorActual;
-
-        const setId = (id) => {
-            oradorId = id;
-            const orador = oradores.find(o => o.id === id);
-            oradorActual = orador;
-            
-
-            document.getElementById('nombreActualizar').value = oradorActual.nombre;
-            document.getElementById('apellidoActualizar').value = oradorActual.apellido;
-            document.getElementById('mailActualizar').value = oradorActual.mail;
-            document.getElementById('temaActualizar').value = oradorActual.tema;
-        }
-
-        const setOradores = (nuevosOradores) => {
-            oradores = nuevosOradores;
-        }
-
-        const actualizarOrador = () => {
-            debugger;
-            if(!oradorActual) {
-                return;
-            }
-            const nombre = document.getElementById('nombreActualizar').value;
-            const apellido = document.getElementById('apellidoActualizar').value;
-            const mail = document.getElementById('mailActualizar').value;
-            const tema = document.getElementById('temaActualizar').value;
-                    
-            const orador = {
-                nombre,
-                apellido,
-                mail,
-                tema
-            };
-
-            //put al servidor
-            //1 preparo la peticion
-            const respuesta = fetch(`http://localhost:8080/web-app/api/orador?id=${oradorActual.id}`,{
-                method: 'PUT',
-                body: JSON.stringify(orador)
-            });
-
-            //2 intento reosolver la promesa
-            respuesta
-                .then(response => response)//solo recibe la confirmacion de ok y con eso lanza el alert
-                .then(respuesta => {
-                    //debugger;
-                    //actualizar el div del html con la informacion
-                    alert(`Se ha actualizado el orador id: ${oradorActual.id}`);
-
-                    //cerrar el modal
-                    document.getElementById('btnCerrar').click()
-                    listarOradores();
-                })
-                .catch(error => console.log(error))
-        }
-
-        document.getElementById('btnActualizar').addEventListener('click', actualizarOrador);
-
-
-    const eliminarOrador = (id) => {
-       // debugger;
-        if (!confirm(`Esta seguro de eliminar el registro: ${id} ?`)) { 
-            return;
-        }
-        const respuesta = fetch(`http://localhost:8080/web-app/api/orador?id=${id}`, {
-            method: 'DELETE',
-        });
-
-        //2 intento reosolver la promesa
-        respuesta
-            .then(response => response)
-            .then(respuesta => {
-                //actualizar el div del html con la informacion
-                alert(`Se ha eliminado el orador id: ${id}`);
-                listarOradores();
-            })
-            .catch(error => console.log(error))
-    }
-
-    const nuevoOrador = () => { 
-        //debugger;
-        const nombre = document.getElementById('nombre').value;
-        const apellido = document.getElementById('apellido').value;
-        const mail = document.getElementById('mail').value;
-        const tema = document.getElementById('tema').value;
-
-        const orador = {
-            nombre,
-            apellido,
-            mail,
-            tema
-        };
-
-        //post al servidor
-        //1 preparo la peticion
-        const respuesta = fetch(`http://localhost:8080/web-app/api/orador`, {
-            method: 'POST',
-            body: JSON.stringify(orador)
-        });
-
-        //2 intento reosolver la promesa
-        respuesta
-            .then(response => response.json())
-            .then(respuesta => {
-                //actualizar el div del html con la informacion
-                alert(`Se ha dado de alta el orador id: ${respuesta.id}`);
-                listarOradores();
-                limpiarInputOradores();
-            })
-            .catch(error => console.log(error))
-
-    }
-    document.getElementById('btnGrabar').addEventListener('click', nuevoOrador);
-
-
-
-    function listarOradores() {
-
-        //1 preparo la peticion
-        const respuesta = fetch('http://localhost:8080/web-app/api/orador');
-
-        
-        //2 intento reosolver la promesa
-        respuesta
-            .then(response => response.json())
-            .then(users => {
-                //actualizar el div del html con la informacion
-                dibujarTabla(users)
-                setOradores(users);
-            })  
-            .catch(error => console.log(error))
-    }
-
-    function dibujarTabla(data) {
-        const rows = dibujarFilas(data);
-        document.getElementById('usersRows').innerHTML = rows;
-    }
-
-    function dibujarFilas(oradores) {
-        let rows = ``;
-        for (let orador of oradores) {//ctrl+d ctr+f2
-            //console.log(user)
-            rows += `
-        <tr>
-            <th scope="row">${orador.id}</th>
-            <td>${orador.nombre}</td>
-            <td>${orador.apellido}</td>
-            <td>${orador.tema}</td>
-            <td>${orador.mail}</td>
-            <td>
-                <button onClick="eliminarOrador(${orador.id})"><i class="fas fa-trash"></i></button>
-                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick="setId(${orador.id})">Editar</button>
-            </td>
-            
-        </tr>
-        `
-        }
-        return rows;
-    }
-    document.getElementById('btnListado').addEventListener('click', listarOradores);
-
-    const cargarOradorDeForm = () => {
-        //debugger;
-        const nombre = document.getElementById('nombre').value;
-        const apellido = document.getElementById('apellido').value;
-        const mail = document.getElementById('mail').value;
-        const tema = document.getElementById('tema').value;
-
-        const orador = {
-            nombre,
-            apellido,
-            mail,
-            tema
-        };
-
-        //post al servidor
-        //1 preparo la peticion
-        const respuesta = fetch(`http://localhost:8080/web-app/api/orador`, {
-            method: 'POST',
-            body: JSON.stringify(orador)
-        });
-
-        //2 intento reosolver la promesa
-        respuesta
-            .then(response => response.json())
-            .then(respuesta => {
-                //actualizar el div del html con la informacion
-                alert(`Se ha dado de alta el orador id: ${respuesta.id}`);
-                listarOradores();
-                limpiarInputOradores();
-            })
-            .catch(error => console.log(error))
-
-    }
-    document.getElementById('btnGrabar').addEventListener('click', nuevoOrador);
-
-    function limpiarInputOradores(){
-        nombre.value="";
-        apellido.value="";
-        mail.value="";
-        tema.value="";
-    }
-
-
-</script>
 
     
 </body>
@@ -295,6 +103,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <!-- <script type="module" src="main.js"></script> -->
 <script src="https://kit.fontawesome.com/be6f6f9a32.js"></script>
-<script src="JS/main.js"></script>
+<script type="module" src="JS/modules/funciones.js"></script>
+<script type="module" src="JS/main.js"></script>
 
 </html>
