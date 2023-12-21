@@ -11,15 +11,18 @@ function enviar(){
         let apellido = document.getElementById('campo_apellido').value;
         let mail = document.getElementById('campo_email').value;
         let tema = document.getElementById('mje').value;
-        alert("Tu mensaje ha sido enviado " + nombre + " " + apellido + "!");
 
+        
         const orador = {
             nombre,
             apellido,
             mail,
             tema
         };
+        
 
+
+        alert("Tu mensaje ha sido enviado " + nombre + " " + apellido + "!");
         //post al servidor
         //1 preparo la peticion
         const respuesta = fetch(`http://localhost:8080/web-app/api/orador`, {
@@ -40,17 +43,7 @@ function enviar(){
 
     }
 
-
    
-
-    
-
-    
-
-
-
-
-
 //Linkeo el botón que voy a usar
 
 const button = document.getElementById('resumen1');
