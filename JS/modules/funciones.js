@@ -215,15 +215,6 @@ function dibujarFilas(oradores) {
 
 
 
-// function limpiarInputOradores(){
-//     nombre.value="";
-//     apellido.value="";
-//     mail.value="";
-//     tema.value="";
-// }
-
-
-
 //Evento automático
 window.addEventListener("load", (event) => {
     listarOradores();
@@ -235,5 +226,6 @@ window.borrar = borrar;
 window.setId= setId;
 window.nuevoOrador = nuevoOrador;
 window.eliminarOrador= eliminarOrador;
+
 
 

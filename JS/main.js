@@ -2,7 +2,8 @@ import { calcular_descuentos } from "./modules/funciones.js"
 import { validarDatos } from "./modules/funciones.js";
 import { agregarResultado } from "./modules/funciones.js";
 
-
+console.log("FrontEnd cargado y conectado con BackEnd ");
+console.log("Trabajo Integrador Final\nGrupo 2: Noelia Guevara, Nuria Vecchio Veselý, Walter Kutschker");
 //Linkeo el botón que voy a usar
 
 const button = document.getElementById('resumen1');
