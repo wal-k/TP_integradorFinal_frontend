@@ -140,7 +140,7 @@ function agregarResultado(resultado) {
                  //actualizar el div del html con la informacion
                  alert(`Se ha dado de alta el orador id ${respuesta.id}: ${respuesta.nombre} ${respuesta.apellido}`);
              })
-             .catch(error => console.log(alert('El email ya se encuentra registrado') + error), )
+             .catch(error => console.log(alert('Verifique, esta intentando registrar un email existente') + error))
      }
      
      
